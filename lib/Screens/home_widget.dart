@@ -9,6 +9,8 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
+  String? selecionado;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,27 +78,31 @@ class _HomeWidgetState extends State<HomeWidget> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  _tiposProdutos('Hamburguer'),
+                  _tiposProdutos(
+                      'Hamburguer', Image.asset('assets/imgs/burguer.jpg')),
                   const SizedBox(
                     width: 15,
                   ),
-                  _tiposProdutos('Hamburguer'),
+                  _tiposProdutos('Pizza', Image.asset('assets/imgs/pizza.jpg')),
                   const SizedBox(
                     width: 15,
                   ),
-                  _tiposProdutos('Hamburguer'),
+                  _tiposProdutos(
+                      'Fit', Image.asset('assets/imgs/fitcomida.png')),
                   const SizedBox(
                     width: 15,
                   ),
-                  _tiposProdutos('Hamburguer'),
+                  _tiposProdutos(
+                      'Bebidas', Image.asset('assets/imgs/refri.jpg')),
                   const SizedBox(
                     width: 15,
                   ),
-                  _tiposProdutos('Hamburguer'),
+                  _tiposProdutos('Sushi', Image.asset('assets/imgs/sushi.jpg')),
                   const SizedBox(
                     width: 15,
                   ),
-                  _tiposProdutos('Hamburguer'),
+                  _tiposProdutos(
+                      'Hamburguer', Image.asset('assets/imgs/burguer.jpg')),
                 ],
               ),
             ),
@@ -130,9 +136,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                       onTap: () {},
                       child: Container(
                         width: 80,
-                        height: 80,
+                        height: 100,
                         decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: const Color.fromARGB(255, 233, 231, 231),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Column(
@@ -193,30 +199,42 @@ class _HomeWidgetState extends State<HomeWidget> {
     );
   }
 
-  Widget _tiposProdutos(String nome) {
-    return Container(
-      width: 80,
-      height: 90,
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: Colors.black),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        children: [
-          Container(
-            height: 70,
-            width: 80,
-            decoration: BoxDecoration(
+  Widget _tiposProdutos(String nome, Image foto) {
+    final bool seSelecionado = selecionado == nome;
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selecionado = nome;
+        });
+      },
+      child: Container(
+        width: 90,
+        height: 90,
+        decoration: BoxDecoration(
+          border: Border.all(
+              width: seSelecionado ? 1 : 0.5,
+              color: seSelecionado ? Colors.green : Colors.grey),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 70,
+              width: 80,
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                image: DecorationImage(
-                    image: AssetImage('assets/imgs/hamburguerchamada.png'),
-                    fit: BoxFit.cover)),
-          ),
-          Text(
-            nome,
-            style: TextStyle(fontSize: 12),
-          ),
-        ],
+                image: DecorationImage(image: foto.image),
+              ),
+            ),
+            Text(
+              nome,
+              style: TextStyle(
+                  fontSize: 12,
+                  color: seSelecionado ? Colors.green : Colors.black),
+            ),
+          ],
+        ),
       ),
     );
   }
