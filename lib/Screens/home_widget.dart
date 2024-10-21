@@ -31,101 +31,106 @@ class _HomeWidgetState extends State<HomeWidget> {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(0.5),
-                hintStyle: TextStyle(color: Colors.grey),
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: Colors.grey,
-                ),
-                hintText: ' O que você  procura hojê?',
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: const BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: const BorderSide(
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(0.5),
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: const Icon(
+                    Icons.search,
                     color: Colors.grey,
                   ),
+                  hintText: ' O que você  procura hojê?',
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(color: Colors.grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: double.infinity,
-              height: 190,
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(20),
-                  image: const DecorationImage(
-                      image: AssetImage('assets/imgs/hamburguerchamada.png'),
-                      fit: BoxFit.cover)),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: double.infinity,
+                height: 190,
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(20),
+                    image: const DecorationImage(
+                        image: AssetImage('assets/imgs/hamburguerchamada.png'),
+                        fit: BoxFit.cover)),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    _tiposProdutos(
+                        'Hamburguer', Image.asset('assets/imgs/burguer.jpg')),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    _tiposProdutos(
+                        'Pizza', Image.asset('assets/imgs/pizza.jpg')),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    _tiposProdutos(
+                        'Fit', Image.asset('assets/imgs/fitcomida.png')),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    _tiposProdutos(
+                        'Bebidas', Image.asset('assets/imgs/refri.jpg')),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    _tiposProdutos(
+                        'Sushi', Image.asset('assets/imgs/sushi.jpg')),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    _tiposProdutos(
+                        'Hamburguer', Image.asset('assets/imgs/burguer.jpg')),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
                 children: [
-                  _tiposProdutos(
-                      'Hamburguer', Image.asset('assets/imgs/burguer.jpg')),
+                  Text('Recomendado para Você'),
                   const SizedBox(
-                    width: 15,
+                    width: 125,
                   ),
-                  _tiposProdutos('Pizza', Image.asset('assets/imgs/pizza.jpg')),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  _tiposProdutos(
-                      'Fit', Image.asset('assets/imgs/fitcomida.png')),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  _tiposProdutos(
-                      'Bebidas', Image.asset('assets/imgs/refri.jpg')),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  _tiposProdutos('Sushi', Image.asset('assets/imgs/sushi.jpg')),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  _tiposProdutos(
-                      'Hamburguer', Image.asset('assets/imgs/burguer.jpg')),
+                  Text(
+                    'Veja Mais',
+                    style: TextStyle(color: Colors.green),
+                  )
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Text('Recomendado para Você'),
-                const SizedBox(
-                  width: 125,
-                ),
-                Text(
-                  'Veja Mais',
-                  style: TextStyle(color: Colors.green),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: GridView.builder(
+              const SizedBox(
+                height: 20,
+              ),
+              GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   itemCount: 6,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -192,8 +197,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                       ),
                     );
                   }),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
