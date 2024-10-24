@@ -1,3 +1,4 @@
+import 'package:delivery_comida/app/data/data.dart';
 import 'package:flutter/material.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -9,6 +10,32 @@ class HomeWidget extends StatefulWidget {
 
 class _HomeWidgetState extends State<HomeWidget> {
   String? selecionado;
+  List<Data> Hamburgueres = [
+    Data(
+        imagem: 'assets/imgs/hb1.jpg',
+        texto: 'Cheddar Classic',
+        preco: 25.90),
+    Data(
+        imagem: 'assets/imgs/hb2.jpg',
+        texto: 'Bacon BBQ Delight',
+        preco: 29.90),
+    Data(
+        imagem: 'assets/imgs/hb3.jpg',
+        texto: 'Veggie Supreme',
+        preco: 23.90),
+    Data(
+        imagem: 'assets/imgs/hb4.jpg',
+        texto: 'Spicy Jalapeño Burger',
+        preco: 34.90),
+    Data(
+        imagem: 'assets/imgs/hb5.jpg',
+        texto: 'Mushroom Swiss Melt',
+        preco: 39.90),
+    Data(
+        imagem: 'assets/imgs/hb6.jpg',
+        texto: 'Teriyaki Dream Burger',
+        preco: 35.90),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +173,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 6,
+                  itemCount: Hamburgueres.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 20,
@@ -173,8 +200,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/imgs/hamburguerchamada.png'),
+                                      image: AssetImage(Hamburgueres[index].imagem),
                                       fit: BoxFit.cover),
                                 ),
                               ),
@@ -183,7 +209,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               height: 10,
                             ),
                             Text(
-                              'Hamburguer Artesanal',
+                              Hamburgueres[index].texto,
                               style: TextStyle(
                                   fontSize: 12, fontFamily: 'PoppinsR'),
                             ),
@@ -196,7 +222,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   width: 20,
                                 ),
                                 Text(
-                                  'R\$ 35,00',
+                                  'R\$ ${Hamburgueres[index].preco.toString()}',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(

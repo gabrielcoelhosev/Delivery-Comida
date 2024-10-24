@@ -67,6 +67,12 @@ flutter:
      - assets/imgs/refri.jpg
      - assets/imgs/sushi.jpg
      - assets/imgs/logo-delivery.png
+     - assets/imgs/hb1.jpg
+     - assets/imgs/hb2.jpg
+     - assets/imgs/hb3.jpg
+     - assets/imgs/hb4.jpg
+     - assets/imgs/hb5.jpg
+     - assets/imgs/hb6.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
